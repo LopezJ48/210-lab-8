@@ -39,43 +39,43 @@ public:
         Node* temp = head;
         for (int i = 0; i < position && temp; ++i)
             temp = temp->next;
-
+            // if the loop exceeds the size of the list it will delete the node and return
         if (!temp) {
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
             return;
         }
 
-        newNode->next = temp->next;
-        newNode->prev = temp;
-        if (temp->next)
+        newNode->next = temp->next; // This links a newnode with the next one in line
+        newNode->prev = temp; // this links the new node to the last
+        if (temp->next) // if it links then it will make a newnode
             temp->next->prev = newNode;
-        else
+        else 
             tail = newNode;
         temp->next = newNode;
     }
-
+        // deletes the values stored 
     void delete_val(int value) {
-        if (!head) return;
+        if (!head) return; 
 
-        Node* temp = head;
+        Node* temp = head; //starts at the head node
         
-        while (temp && temp->data != value)
+        while (temp && temp->data != value) //loop through until it hits the position of said value
             temp = temp->next;
 
-        if (!temp) return; 
+        if (!temp) return; // returns if temp value is not found 
 
         if (temp->prev)
-            temp->prev->next = temp->next;
+            temp->prev->next = temp->next; // links the found value to the next node
         else
-            head = temp->next; 
+            head = temp->next; //replaces head node
 
-        if (temp->next)
+        if (temp->next) // will link to next node if there is a next node 
             temp->next->prev = temp->prev;
         else
-            tail = temp->prev; 
+            tail = temp->prev; // else will change the tail
 
-        delete temp;
+        delete temp; // deletes the temp node 
     }
 
     void delete_pos(int pos) {
