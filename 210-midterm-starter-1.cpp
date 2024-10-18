@@ -109,54 +109,54 @@ public:
             return;
         }
     
-        Node* tempPrev = temp->prev;
+        Node* tempPrev = temp->prev;//  links the nodes together while deleting the current temp one
         tempPrev->next = temp->next;
         temp->next->prev = tempPrev;
-        delete temp;
+        delete temp; //deletes node 
     }
 
-    void push_back(int v) {
-        Node* newNode = new Node(v);
-        if (!tail)
+    void push_back(int v) { //puts a new node at the end of the list 
+        Node* newNode = new Node(v); 
+        if (!tail) // if the tail is empty assign all to the same value
             head = tail = newNode;
         else {
             tail->next = newNode;
             newNode->prev = tail;
-            tail = newNode;
+            tail = newNode; // new node is now at the tail 
         }
     }
-    
+    // puts a new node at the front 
     void push_front(int v) {
-        Node* newNode = new Node(v);
+        Node* newNode = new Node(v); 
         if (!head)
-            head = tail = newNode;
+            head = tail = newNode; // if the head is empty assign all these to the same value 
         else {
-            newNode->next = head;
+            newNode->next = head; //else new node is head node
             head->prev = newNode;
             head = newNode;
         }
     }
-    
+    // function to pop the front node
     void pop_front() {
 
-        if (!head) {
+        if (!head) { // head is empty cout and return
             cout << "List is empty." << endl;
             return;
         }
 
-        Node * temp = head;
+        Node * temp = head; //start at head
 
         if (head->next) {
             head = head->next;
-            head->prev = nullptr;
+            head->prev = nullptr;  // if head is next make prev null
         }
         else
-            head = tail = nullptr;
+            head = tail = nullptr;// else make all equal and delete temp
         delete temp;
     }
-
+// function to pop the back node 
     void pop_back() {
-        if (!tail) {
+        if (!tail) { // tail empty cout and return
             cout << "List is empty." << endl;
             return;
         }
@@ -206,6 +206,9 @@ public:
     }
 };
 
+void every_other_element(){
+     Node* current = head;
+}
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
