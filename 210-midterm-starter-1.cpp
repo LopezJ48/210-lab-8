@@ -78,33 +78,33 @@ public:
         delete temp; // deletes the temp node 
     }
 
-    void delete_pos(int pos) {
-        if (!head) {
+    void delete_pos(int pos) {// deletes positions 
+        if (!head) {// if head is empty 
             cout << "List is empty." << endl;
-            return;
+            return;// will say list empty and return
         }
     
-        if (pos == 1) {
+        if (pos == 1) {// if the posiiton is 1 it will pop the front node
             pop_front();
             return;
         }
     
-        Node* temp = head;
+        Node* temp = head; //node starts at head
     
-        for (int i = 1; i < pos; i++){
-            if (!temp) {
+        for (int i = 1; i < pos; i++){ // goes through list to find position 
+            if (!temp) {//if the position is not found it returns
                 cout << "Position doesn't exist." << endl;
                 return;
             }
             else
-                temp = temp->next;
+                temp = temp->next; //else it continues to search
         }
-        if (!temp) {
+        if (!temp) { //if the position isnt found say pos doesnt exist
             cout << "Position doesn't exist." << endl;
-            return;
+            return;// returns
         }
     
-        if (!temp->next) {
+        if (!temp->next) { //if pos is at the end and does not have a nother node it will call to pop the back node
             pop_back();
             return;
         }
@@ -170,34 +170,35 @@ public:
             head = tail = nullptr;
         delete temp;
     }
-
+// Destructor 
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
             head = head->next;
-            delete temp;
+            delete temp; // deletes the temp node thats made to go through 
         }
     }
+    //Print function 
     void print() {
-        Node* current = head;
-        if (!current) {
+        Node* current = head; //starts at head node
+        if (!current) { //if there is no current node list is empty 
             cout << "List is empty." << endl;
             return;
         }
-        while (current) {
+        while (current) { //if there is cout the data and go to the next
             cout << current->data << " ";
             current = current->next;
         }
         cout << endl;
     }
-
+// starts at the tail and prints the nodes in reverse order statrting at the tail 
     void print_reverse() {
         Node* current = tail;
         if (!current) { 
             cout << "List is empty." << endl;
             return;
         }
-        while (current) {
+        while (current) { // couts data and goes the the one behind it as you are traversing backwards
             cout << current->data << " ";
             current = current->prev;
         }
