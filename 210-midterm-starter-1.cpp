@@ -204,27 +204,32 @@ public:
         }
         cout << endl;
     }
-
-    void every_other_element(){
+    void every_other_element() {
      Node* current = head;
      while(current){
         cout << current -> data << " " << endl;
         if (current -> next){
-            current = current -> next -> next;
+            current = current -> next -> next; 
             }else{
                 return;
             }
      }
+    }
 };
 
 int main() {
     DoublyLinkedList D;
-    D.push_front(5)
 
+    D.push_back(10);
+    D.push_back(20);
+    D.push_back(30);
+    D.push_back(40);
+    D.push_back(50);
+    D.push_back(60);
 
     D.every_other_element();
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
-    
+    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // Dummy statement to avoid compiler warning
+
     return 0;
 }
