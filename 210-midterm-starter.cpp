@@ -233,14 +233,15 @@ int time_periods = 20;
  ifstream inputFile("names.txt");
 vector <string> names;
 string name;
-while(inputFile >> name){
-names.push_back(name);
-    } 
+
     inputFile.open("names.txt");
     if (!inputFile.is_open()) {
         cout << "Error opening file" << endl;
         return 1;
     }
+while(inputFile >> name){
+names.push_back(name);
+    } 
 inputFile.close();
 
 cout << "Store opens: " << endl;
@@ -253,5 +254,17 @@ if(getRandom() <= 40 &&!line.isEmpty()){
     cout << line.front() << "was served" << endl;
     line.pop_front();
 }
-return;
-};
+if(getRandom() <= 60 &&!line.isEmpty()){
+    cout << line.front() << "was served" << endl;
+    line.pop_front();
+}
+if(getRandom() <= 20 &&!line.isEmpty()){
+    cout << line.back() << "left" << endl;
+    line.pop_back();
+}
+if(getRandom() <= 10 &&!line.isEmpty()){
+
+}
+line.print();
+return 0;
+}
