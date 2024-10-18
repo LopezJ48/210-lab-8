@@ -209,12 +209,8 @@ public:
         }
         cout << endl;
     }
-    double getRandom(){
-      double randomRate = rand() % ((MAX * 10) -
-        (MIN * 10) + 1) + (MIN * 10);
-    randomRate = randomRate / 10;
-    return randomRate;
-    }
+    int getRandom(){
+return rand() % 100 + 1;
 };
 
 
@@ -222,10 +218,13 @@ int main() {
 srand(time(0));
 DoublyLinkedList line;
 int time_periods = 20;
-
-    ifstream inputFile;
-    vector <string> names;
-    string name;
+ ifstream inputFile("names.txt");
+vector <string> names;
+string name;
+while(inputFile >> name){
+names.push_back(name);
+    }
+    
     inputFile.open("names.txt");
     if (!inputFile.is_open()) {
         cout << "Error opening file" << endl;
@@ -234,9 +233,12 @@ int time_periods = 20;
 
 cout << "Store opens: " << endl;
 
+
+line.print();
  for (int t = 1; t <= time_periods; ++t)
  cout << "Time stamp: "<< t << endl;
 
+if(getRandom() <= 40 )
     
     return 0;
 }
