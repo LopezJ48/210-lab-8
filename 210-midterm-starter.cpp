@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
-#include <random>
+#include <ctime>
 
 
 using namespace std;
@@ -15,6 +15,7 @@ class DoublyLinkedList {
 private:
     struct Node {
         int data;
+        string name;
         Node* prev;
         Node* next;
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
@@ -209,9 +210,20 @@ public:
         }
         cout << endl;
     }
+    bool isEmpty() {
+        return head == nullptr;
+    }
+    string front() {
+        return head ? head->name : "";
+    }
+    string back(){
+        return tail ? tail->name : "";
+    }
+
     int getRandom(){
 return rand() % 100 + 1;
 };
+
 
 
 int main() {
@@ -223,22 +235,23 @@ vector <string> names;
 string name;
 while(inputFile >> name){
 names.push_back(name);
-    }
-    
+    } 
     inputFile.open("names.txt");
     if (!inputFile.is_open()) {
         cout << "Error opening file" << endl;
         return 1;
     }
+inputFile.close();
 
 cout << "Store opens: " << endl;
-
-
 line.print();
- for (int t = 1; t <= time_periods; ++t)
- cout << "Time stamp: "<< t << endl;
 
-if(getRandom() <= 40 )
-    
-    return 0;
+for (int t = 1; t <= time_periods; ++t)
+cout << "Time stamp: "<< t << endl;
+
+if(getRandom() <= 40 &&!line.isEmpty()){
+    cout << line.front() << "was served" << endl;
+    line.pop_front();
 }
+return;
+};
