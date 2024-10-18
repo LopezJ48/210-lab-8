@@ -3,10 +3,12 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
+#include <random>
 
 
 using namespace std;
-
+const int MAX = 5;
+const int MIN = 1;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
 class DoublyLinkedList {
@@ -207,21 +209,38 @@ public:
         }
         cout << endl;
     }
+    double getRandom(){
+      double randomRate = rand() % ((MAX * 10) -
+        (MIN * 10) + 1) + (MIN * 10);
+    randomRate = randomRate / 10;
+    return randomRate;
+    }
 };
 
+
 int main() {
+srand(time(0));
 DoublyLinkedList line;
 int time_periods = 20;
 
-    ifstream file("names.txt");
-    vector <string> names;
+    ifstream inputFile;
+    vector < string > names;
     string name;
-    while (file >> name){
-        names.push_back(name);
+    inputFile.open("names.txt");
+    if (!inputFile.is_open()) {
+        cout << "Error opening file" << endl;
+        return 1;
     }
 
-    cout << "Store opens: " << endl;
+cout << "Store opens: " << endl;
+ for(int i= 0; i < 5; ++i){
+    string customer_name = names[rand() % names.size()];
+    cout << customer_name << "Has joined the line" << endl;
+ }
+ line.print();
 
+ for (int t = 1; t <= time_periods; ++t)
+ cout << "Time stamp: "<< t << endl;
 
     
     return 0;
