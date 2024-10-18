@@ -204,12 +204,25 @@ public:
         }
         cout << endl;
     }
+
+    void every_other_element(){
+     Node* current = head;
+     while(current){
+        cout << current -> data << " " << endl;
+        if (current -> next){
+            current = current -> next -> next;
+            }else{
+                return;
+            }
+     }
 };
 
-void every_other_element(){
-     Node* current = head;
-}
 int main() {
+    DoublyLinkedList D;
+    D.push_front(5)
+
+
+    D.every_other_element();
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
     
