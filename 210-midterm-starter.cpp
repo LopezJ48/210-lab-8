@@ -224,7 +224,7 @@ DoublyLinkedList line;
 int time_periods = 20;
 
     ifstream inputFile;
-    vector < string > names;
+    vector <string> names;
     string name;
     inputFile.open("names.txt");
     if (!inputFile.is_open()) {
@@ -233,11 +233,6 @@ int time_periods = 20;
     }
 
 cout << "Store opens: " << endl;
- for(int i= 0; i < 5; ++i){
-    string customer_name = names[rand() % names.size()];
-    cout << customer_name << "Has joined the line" << endl;
- }
- line.print();
 
  for (int t = 1; t <= time_periods; ++t)
  cout << "Time stamp: "<< t << endl;
