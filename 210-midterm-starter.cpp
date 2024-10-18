@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <cstdlib>
 
 
 using namespace std;
@@ -209,6 +210,8 @@ public:
 };
 
 int main() {
+DoublyLinkedList line;
+int time_periods = 20;
 
     ifstream file("names.txt");
     vector <string> names;
@@ -216,8 +219,9 @@ int main() {
     while (file >> name){
         names.push_back(name);
     }
-    
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+
+    cout << "Store opens: " << endl;
+
 
     
     return 0;
