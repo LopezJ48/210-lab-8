@@ -39,8 +39,20 @@ void delete_goat(list<Goat>&trip){
 }
 void display_trip(const list<Goat> & trip){
     int index = 1;
-    
+    for(const auto &goat : trip){
+        cout << index++ << goat.get_name()
+        << goat.get_age() << goat.get_color() << endl;
+    }
 }
+
+int select_goat(const list<Goat>&trip){
+    display_trip(trip);
+    int choice;
+    cout << "pick a goat to delete";
+    cin >> choice;
+    return choice - 1;
+}
+
 int main_menu(){
     int choice;
     cout<< "** GOAT MANAGER 3001 **" << endl;
