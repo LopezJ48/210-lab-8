@@ -11,8 +11,11 @@ private:
     int age;
     string color;
 public: 
-    Goat()                          { name = ""; age = 0; color = ""; }
-    
+    Goat()   { name = ""; age = 0; color = ""; }
+    Goat(string n) : name(n), age(0), color("") {}
+    Goat(string n, int a) : name(n), age(a), color(""){}
+    Goat(string n, int a, string c) : name(n), age(a), color(c) {}
+
     // write three more constructors
 
     // setters and getters
@@ -24,6 +27,9 @@ public:
     string get_color() const        { return color; }
 
     // write overloaded < operator for the std::list
+    bool operator<(const Goat &other) const{
+        return name < other.name;
+    }
 };
 
 #endif
