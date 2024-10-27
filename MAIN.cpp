@@ -8,16 +8,17 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(list<Goat> trip);
+int select_goat(set<Goat> trip);
 void delete_goat(set<Goat> &trip);
 void add_goat(set<Goat> &trip, string [], string []);
 void display_trip(set<Goat> trip);
 
-void add_goat(list<Goat> &trip, string names[], string colors[]){
+void add_goat(set<Goat> &trip, string names[], string colors[]){
     string name = names[rand() % SZ_NAMES];
     string color = colors[rand() % SZ_COLORS];
     int age = rand() % MAX_AGE;
     Goat new_goat(name, age, color);
+
     auto result = trip.insert(new_goat);
     if (result.second){
         cout << "added " << name << "("<<age << color << ")" << endl;
@@ -78,6 +79,7 @@ int main() {
     srand(time(0));
     string names[SZ_NAMES], colors[SZ_COLORS];
     set<Goat>trip;
+    
     while(true) {
         int choice = main_menu();
 
