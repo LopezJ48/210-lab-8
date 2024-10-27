@@ -20,11 +20,13 @@ void add_goat(list<Goat> &trip, string names[], string colors[]){
     Goat new_goat(name, age, color);
     auto result = trip.insert(new_goat);
     if (result.second){
-        
+        cout << "added " << name << "("<<age << color << ")" << endl;
+    } else {
+        cout << "Goat" << name << "already is in" << endl;
     }
 }
 
-void delete_goat(list<Goat>&trip){
+void delete_goat(set<Goat>&trip){
     if(trip.empty()){
         cout << "No goats to delete" << endl;
         return;
@@ -37,11 +39,10 @@ void delete_goat(list<Goat>&trip){
  auto it = trip.begin();
  advance(it, choice);
  trip.erase(it);
-
  cout << "Deleted goat" << endl;
 }
 
-void display_trip(list<Goat> trip){
+void display_trip(set<Goat> trip){
     int index = 1;
     for(const auto &goat : trip){
         cout << index++ << goat.get_name()
@@ -49,7 +50,7 @@ void display_trip(list<Goat> trip){
     }
 }
 
-int select_goat( list<Goat>trip){
+int select_goat(set<Goat>trip){
     display_trip(trip);
     int choice;
     cout << "pick a goat to delete";
@@ -76,7 +77,7 @@ int main_menu(){
 int main() {
     srand(time(0));
     string names[SZ_NAMES], colors[SZ_COLORS];
-    list<Goat>trip;
+    set<Goat>trip;
     while(true) {
         int choice = main_menu();
 
