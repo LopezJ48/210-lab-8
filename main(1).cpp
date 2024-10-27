@@ -11,11 +11,35 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+
 void add_goat(list<Goat> &trip, string names[], string colors[]){
     string name = names[rand() % SZ_NAMES];
     string color = colors[rand() % SZ_COLORS];
     int age = rand() % MAX_AGE;
-    Goat new_goat
+    Goat new_goat(name, age, color);
+    trip.push_back(new_goat);
+    cout << "Added goat:" << name << "("<<age << "," << color <<")" << endl;
+
+}
+void delete_goat(list<Goat>&trip){
+    if(trip.empty()){
+        cout << "No goats to delete" << endl;
+        return;
+    }
+    int choice = select_goat(trip);
+    if (choice < 0 || choice >= trip.size()){
+        cout << "invalid choice!" << endl;
+    return;
+    }
+ auto it = trip.begin();
+ advance(it, choice);
+ trip.erase(it);
+
+ cout << "Deleted goat" << endl;
+}
+void display_trip(const list<Goat> & trip){
+    int index = 1;
+    
 }
 int main_menu(){
     int choice;
