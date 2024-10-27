@@ -11,6 +11,12 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+void add_goat(list<Goat> &trip, string names[], string colors[]){
+    string name = names[rand() % SZ_NAMES];
+    string color = colors[rand() % SZ_COLORS];
+    int age = rand() % MAX_AGE;
+    Goat new_goat
+}
 int main_menu(){
     int choice;
     cout<< "** GOAT MANAGER 3001 **" << endl;
