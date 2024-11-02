@@ -18,9 +18,23 @@ void displayVillagers(const map<string, VillagerData>& villagerData){
 }
 
 void addVillager(const map<string, VillagerData>& villagerData){
-    string name, 
+    string name, species, catchphrase;
+    int friendship;
+    cout << "Villager name: ";
+    cin >> ip;
+    getline(cin, name);
+    cout << "Friendship level (0-10): ";
+    cin >> friendship
+    cout << "Villager species: ";
+    cin >> ip;
+    getline(cin, species);
+    cout << "Catchphrase: ";
+    cin >> ip;
+    getline(cin, catchphrase);
+    villagerData[name] = make_tuple(friendship, species, catchprase);
 }
 void deleteVillager()
+
 void modifyFriendship()
 void searchVillager()
 
