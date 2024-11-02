@@ -98,21 +98,33 @@ int main() {
             case 2:
             deleteVillager(villagerData);
             break;
-            case 3:
+            case 3:{
             string name;
             cout << "Pick a villager to increase friendship";
             cin >> ws;
             getline(cin,name);
             modifyFriendship(villagerData,name, 1);
             break;
-            case 3:
+            }
+            case 4:{
             string name;
-            cout << "Pick a villager to increase friendship";
+            cout << "Pick a villager to decrease friendship";
             cin >> ws;
             getline(cin,name);
-            modifyFriendship(villagerData,name, 1);
+            modifyFriendship(villagerData,name, -1);
             break;
-
+            }
+            case 5:
+                searchVillager(villagerData);
+                break;
+            case 6:
+                cout << "Exiting";
+                break;
+            default:
+            cout << "invalid option try again.";
         }
+        displayVillagers(villagerData);
     }
+    while (choice !=6);
+    return 0;
 }
