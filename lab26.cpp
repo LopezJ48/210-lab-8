@@ -1,10 +1,28 @@
 #include <iostream>
 #include <map>
-#include <vector>
+#include <tuple>
+#include <string>
+
 using namespace std;
 
+using VillagerData = tuple<int, string, string>;
 
+void displayVillagers(const map<string, VillagerData>& villagerData){
+    cout << "Villager details: " << endl;
+    for (const auto& pair : villagerData){
+        cout << pair.first <<
+        get<0>(pair.second) <<
+        get<1>(pair.second) <<
+        get<2>(pair.second) << endl;
+    }
+}
 
+void addVillager(const map<string, VillagerData>& villagerData){
+    string name, 
+}
+void deleteVillager()
+void modifyFriendship()
+void searchVillager()
 
 
 
