@@ -17,37 +17,41 @@ void displayVillagers(const map<string, VillagerData>& villagerData){
     }
 }
 
-void addVillager(const map<string, VillagerData>& villagerData){
+void addVillager(map<string, VillagerData>& villagerData){
     string name, species, catchphrase;
     int friendship;
     cout << "Villager name: ";
-    cin >> ip;
+    cin >> ws;
     getline(cin, name);
     cout << "Friendship level (0-10): ";
     cin >> friendship;
     cout << "Villager species: ";
-    cin >> ip;
+    cin >> ws;
     getline(cin, species);
     cout << "Catchphrase: ";
-    cin >> ip;
     getline(cin, catchphrase);
     villagerData[name] = make_tuple(friendship, species, catchphrase);
     cout << name << "has been added.";
 }
-void deleteVillager(const map<string, VillagerData>& villagerData){
+
+void deleteVillager(map<string, VillagerData>& villagerData){
     string name;
     cout << "Pick a villager to delete: " << endl;
-    cin >> ip;
-    getline(cin, name);
+    cin >> ws;
     if (villagerData.erase(name)){
         cout << name << "has been deleted.";
         }
         else {
             cout << name << "was not found.";
         }
+}
 
-void modifyFriendship(map<string, VillagerData>& villager){
-
+void modifyFriendship(map<string, VillagerData>& villagerData,const string& name, int change){
+    auto it = villagerData.find(name);
+    if (it != villagerData.end()){
+        int& friendship = get<0>(it->second);
+        friendship = max()
+    }
 }
 void searchVillager()
 
