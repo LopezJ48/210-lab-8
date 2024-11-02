@@ -50,10 +50,32 @@ void modifyFriendship(map<string, VillagerData>& villagerData,const string& name
     auto it = villagerData.find(name);
     if (it != villagerData.end()){
         int& friendship = get<0>(it->second);
-        friendship = max()
+        friendship = max(0, min(10, friendship + change));
+        cout << name << "friendship has gone up to" << friendship << endl;{
+
+        }else {
+                cout << name <<" was not found." << endl;
+            }
+        }
     }
 }
-void searchVillager()
+
+void searchVillager(map<string, VillagerData>& villagerData){
+    string name;
+    cout << "Enter villager name";
+    cin >> ws;
+    getline(cin, name);
+    auto it = villagerData.find(name);
+    if (it != villagerData.end()) {
+        cout << name << "found: "
+        << get<0>(it->second)
+        << get<1>(it->second)
+        << get<2>(it->second) << endl;
+       } 
+        else{
+            cout << name << "was not found.";
+        }
+}
 
 
 
