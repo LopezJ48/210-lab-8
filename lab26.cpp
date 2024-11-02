@@ -11,27 +11,26 @@ void displayVillagers(const map<string, VillagerData>& villagerData){
     cout << "Villager details: " << endl;
     for (const auto& pair : villagerData){
         cout << pair.first <<
-        get<0>(pair.second) <<
-        get<1>(pair.second) <<
-        get<2>(pair.second) << endl;
+        get<0>(pair.second) << ","
+        << get<1>(pair.second) << ","
+        << get<2>(pair.second) << endl;
     }
 }
-
 void addVillager(map<string, VillagerData>& villagerData){
     string name, species, catchphrase;
     int friendship;
-    cout << "Villager name: ";
+    cout << "Villager name: " << endl;
     cin >> ws;
     getline(cin, name);
-    cout << "Friendship level (0-10): ";
+    cout << "Friendship level (0-10): " << endl;
     cin >> friendship;
-    cout << "Villager species: ";
+    cout << "Villager species: " << endl;
     cin >> ws;
     getline(cin, species);
-    cout << "Catchphrase: ";
+    cout << "Catchphrase: " << endl;
     getline(cin, catchphrase);
     villagerData[name] = make_tuple(friendship, species, catchphrase);
-    cout << name << "has been added.";
+    cout << name << "has been added."; 
 }
 
 void deleteVillager(map<string, VillagerData>& villagerData){
@@ -65,8 +64,8 @@ void searchVillager(map<string, VillagerData>& villagerData){
     auto it = villagerData.find(name);
     if (it != villagerData.end()) {
         cout << name << "found: "
-        << get<0>(it->second)
-        << get<1>(it->second)
+        << get<0>(it->second) << ","
+        << get<1>(it->second) << ","
         << get<2>(it->second) << endl;
        } 
         else{
@@ -83,11 +82,11 @@ int main() {
 
     do{
         cout << "Please pick an option:"<< endl;
-        cout << "1. Add Villager";
-        cout << "2. Delete Villager";
-        cout << "3. Increase Friendship";
-        cout << "4. Decrease Friendship";
-        cout << "5. Search for Villager";
+        cout << "1. Add Villager\n" << endl;
+        cout << "2. Delete Villager\n";
+        cout << "3. Increase Friendship\n";
+        cout << "4. Decrease Friendship\n";
+        cout << "5. Search for Villager\n";
         cout << "6. Exit";
         cin >> choice;
 
