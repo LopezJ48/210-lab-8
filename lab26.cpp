@@ -51,14 +51,11 @@ void modifyFriendship(map<string, VillagerData>& villagerData,const string& name
     if (it != villagerData.end()){
         int& friendship = get<0>(it->second);
         friendship = max(0, min(10, friendship + change));
-        cout << name << "friendship has gone up to" << friendship << endl;{
-
+        cout << name << "friendship has gone up to" << friendship << endl;
         }else {
                 cout << name <<" was not found." << endl;
             }
         }
-    }
-}
 
 void searchVillager(map<string, VillagerData>& villagerData){
     string name;
@@ -81,53 +78,41 @@ void searchVillager(map<string, VillagerData>& villagerData){
 
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+    map<string, VillagerData> villagerData;
+    int choice;
 
-    // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    villagerColors["Raymond"] = {"Black", "Gray", "White"};
-    villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
+    do{
+        cout << "Please pick an option:"<< endl;
+        cout << "1. Add Villager";
+        cout << "2. Delete Villager";
+        cout << "3. Increase Friendship";
+        cout << "4. Decrease Friendship";
+        cout << "5. Search for Villager";
+        cout << "6. Exit";
+        cin >> choice;
 
-    // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
-    for (auto pair : villagerColors) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
-    }
+        switch (choice){
+            case 1:
+            addVillager(villagerData);
+            break;
+            case 2:
+            deleteVillager(villagerData);
+            break;
+            case 3:
+            string name;
+            cout << "Pick a villager to increase friendship";
+            cin >> ws;
+            getline(cin,name);
+            modifyFriendship(villagerData,name, 1);
+            break;
+            case 3:
+            string name;
+            cout << "Pick a villager to increase friendship";
+            cin >> ws;
+            getline(cin,name);
+            modifyFriendship(villagerData,name, 1);
+            break;
 
-    // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerColors.begin(); 
-                                               it != villagerColors.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
         }
-        cout << endl;
     }
-
-    // delete an element
-    villagerColors.erase("Raymond");
-
-    // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
-    auto it = villagerColors.find(searchKey);
-    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
-
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerColors.size() << endl;
-    villagerColors.clear();
-    cout << "Size after clear: " << villagerColors.size() << endl;
-
-    return 0;
 }
