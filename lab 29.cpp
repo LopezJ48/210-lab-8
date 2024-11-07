@@ -22,6 +22,12 @@ void simulateInventory(map<string, int>& inventoryData){ // will show inventory 
         cout << endl;
     }
 }
+// add different functions to add events such as stealing or popular items
+    //randomly decide to increase or decrease stock by a huge number
+    // ensure stock hits 0 
+    // doesnt go below zero
+    // print new data for stock
+
 
 void displayInventory(map<string, int>& inventoryData){
     cout << "Inventory check " << endl;
@@ -29,8 +35,17 @@ void displayInventory(map<string, int>& inventoryData){
         cout << category << "Instore: " << stock << endl;
     }
 }
-// Initialize a map to store information of categories 
+// Initialize a map to store information of categories for drinks, foods, goods
+
 int main(){
-int days = 5
+int days = 5;
+    map<string, int> inventoryData = {
+        {"Food", 50},
+        {"drinks", 80},
+        {"goods", 6}
+    };
+    displayInventory(inventoryData);
+    simulateInventory(inventoryData, days);
+    return 0;
 
 }
