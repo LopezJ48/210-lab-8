@@ -10,7 +10,7 @@ using namespace std;
     // go over each level of items in stock from stock file
     // close file 
 
-void simulateInventory(map<string, int>& inventoryData){ // will show inventory changes throughout the days
+void simulateInventory(map<string, int>& inventoryData, int days){ // will show inventory changes throughout the days
     for (int day = 0; day < days; ++day){
         cout << "Day" << day + 1 << endl; // will run through days with stock of items such as foods,drinks,goods
         for (auto& [category, stock] : inventoryData){
@@ -28,7 +28,9 @@ void simulateInventory(map<string, int>& inventoryData){ // will show inventory 
     // doesnt go below zero
     // print new data for stock
 
-
+// add a function to handle the events of stealing or the poplarity 
+    // will choose an event to apply 
+    
 void displayInventory(map<string, int>& inventoryData){
     cout << "Inventory check " << endl;
     for(const auto& [category, stock] : inventoryData){
