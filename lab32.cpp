@@ -2,11 +2,13 @@
 #include <deque>
 #include <iostream>
 #include <iomanip>
-#include "Car.h"
+#include "Car-1.h"
 
 using namespace std;
 
-const int INITIAL_SIZE_DEQUE = 2;
+const int INITIAL_SIZE_QUEUE = 2;
+const int PAY_CHANCE = 55;
+const int JOIN_CHANCE = 45;
 
 
 void displayQueue(deque<Car>& queue){
@@ -15,7 +17,18 @@ void displayQueue(deque<Car>& queue){
     }
     else{
         cout << "queue: \n";
-        for (const auto& car : queue)
+        for (auto& car : queue)
         car.print();
     }
+}
+
+int main(){
+    srand(static_cast<int>(time(nullptr)));
+    deque<Car> queue;
+
+    for(int i = 0;i < INITIAL_SIZE_QUEUE; i++){
+        queue.push_back(car());
+    }
+    cout << "Starting Queue: ";
+    
 }
