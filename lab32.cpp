@@ -16,7 +16,7 @@ void displayQueue(deque<Car>& queue){
         cout << "queue is empty\n";
     }
     else{
-        cout << "queue: \n";
+        cout << endl << "queue: \n";
         for (auto& car : queue)
         car.print();
     }
@@ -27,8 +27,25 @@ int main(){
     deque<Car> queue;
 
     for(int i = 0;i < INITIAL_SIZE_QUEUE; i++){
-        queue.push_back(car());
+        queue.push_back(Car());
     }
     cout << "Starting Queue: ";
-    
+    displayQueue(queue);
+
+    int time = 1;
+    while (!queue.empty()){
+        int action = rand() % 100;
+        if (action < PAY_CHANCE){
+            cout << "Car paid: ";
+            queue.front().print();
+            queue.pop_front();
+        }
+        else (action > JOIN_CHANCE){
+            Car newCar;
+            queue.push_back(newCar);
+            cout << "joined lane: ";
+            newCar.print();
+        }
+        displayQueue(queue);
+    }
 }
