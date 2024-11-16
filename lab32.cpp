@@ -8,7 +8,6 @@ using namespace std;
 
 const int INITIAL_SIZE_QUEUE = 2;
 const int PAY_CHANCE = 55;
-const int JOIN_CHANCE = 45;
 
 
 void displayQueue(deque<Car>& queue){
@@ -29,23 +28,27 @@ int main(){
     for(int i = 0;i < INITIAL_SIZE_QUEUE; i++){
         queue.push_back(Car());
     }
+
     cout << "Starting Queue: ";
     displayQueue(queue);
 
     int time = 1;
     while (!queue.empty()){
         int action = rand() % 100;
+        cout << "time: " << time << endl;
         if (action < PAY_CHANCE){
             cout << "Car paid: ";
             queue.front().print();
             queue.pop_front();
         }
-        else (action > JOIN_CHANCE){
+        else {
             Car newCar;
             queue.push_back(newCar);
             cout << "joined lane: ";
             newCar.print();
         }
         displayQueue(queue);
+        ++time;
     }
+    return 0;
 }
